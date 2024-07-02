@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+   <style>
+    .container{
+    width: 350px;
+    height: 420px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: auto;
+    border: 4px solid;
+    background-color: black;
+}
+#screen{
+    width: 320px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 12px;
+    border-radius: 5px;
+    pointer-events: none
+}
+.numberBtn{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 35px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.buttons{
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color:grey;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 0px 3px lightgray;
+    transition: transform 0.3s ease
+}
+.opbuttons{
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 0px 3px lightgray;
+    transition: transform 0.3s ease
+}
+.opbuttons:hover{
+    transform: scale(1.1);
+}
+.buttons:hover{
+    transform: scale(1.1);
+}
+   </style>>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" placeholder="0" id="screen" />
+      <div class="numberBtn">
+        <button class="buttons" onclick="numClick(9)">9</button>
+        <button class="buttons" onclick="numClick(8)">8</button>
+        <button class="buttons" onclick="numClick(7)">7</button>
+        <button class="opbuttons" onclick="arithmatic('+')">+</button>
+        <button class="buttons" onclick="numClick(6)">6</button>
+        <button class="buttons" onclick="numClick(5)">5</button>
+        <button class="buttons" onclick="numClick(4)">4</button>
+        <button class="opbuttons" onclick="arithmatic('-')">-</button>
+        <button class="buttons" onclick="numClick(3)">3</button>
+        <button class="buttons" onclick="numClick(2)">2</button>
+        <button class="buttons" onclick="numClick(1)">1</button>
+        <button class="opbuttons" onclick="arithmatic('*')">*</button>
+        <button class="opbuttons" onclick="clearScreen()">C</button>
+        <button class="buttons" onclick="numClick(0)">0</button>
+        <button class="opbuttons" onclick="clickEquals()">=</button>
+        <button class="opbuttons" onclick="arithmatic('/')">/</button>
+      </div>
+    </div>
+
+    <script>
+      var numOne=0;
+var numTwo=0;
+var vals = '+';
+
+function numClick(num){
+    document.getElementById('screen').value+=num
+}
+
+function arithmatic(val){
+     numOne = parseFloat(document.getElementById('screen').value)
+     vals = val
+     document.getElementById('screen').value = " "
+}
+function clickEquals(){
+    numTwo = parseFloat(document.getElementById('screen').value)
+
+    switch(vals){
+        case '+': var sum = numOne + numTwo
+        break;
+        case '-': var sum = numOne - numTwo
+        break;
+        case '*': var sum = numOne * numTwo
+        break;
+        case '/': var sum = numOne / numTwo
+        break;
+        default: document.getElementById('screen').value = 'Erorr!!'
+    }
+    
+    document.getElementById('screen').value = sum
+}
+
+function clearScreen(){
+    document.getElementById('screen').value = ""
+}
+
+    </script>
+  </body>
+</html>
